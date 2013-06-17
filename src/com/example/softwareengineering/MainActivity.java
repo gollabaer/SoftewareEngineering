@@ -22,7 +22,9 @@ public class MainActivity extends Activity {
 	
 	
 	/**
-	 * soll das Fenster mit der Benutzercodegenerierung öffnen
+	 * Funktion für Button 
+	 * "Erstelle deinen Benutzercode"
+	 * , öffnet das Fenster mit der Benutzercodegenerierung
 	 */
 	public void usercode(View view){
 		setContentView(R.layout.usercode);
