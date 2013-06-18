@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp"
-        android:text="Willlkommen!"
+        android:text="Willkommen!"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button

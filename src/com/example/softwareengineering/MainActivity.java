@@ -29,5 +29,9 @@ public class MainActivity extends Activity {
 	public void usercode(View view){
 		setContentView(R.layout.usercode);
 	}
+	
+	public void optionen(View view){
+		setContentView(R.layout.optionen);
+	}
 
 }
