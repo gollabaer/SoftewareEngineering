@@ -46,6 +46,7 @@
         android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
         android:layout_marginTop="31dp"
-        android:text="Optionen" />
+        android:text="Optionen" 
+        android:onClick="optionen"/>
 
 </RelativeLayout>

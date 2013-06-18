@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="vorname">Vorname</string>
     <string name="nachname">Nachname</string>
+    <string name="title_activity_usercode">Usercode</string>
 
 </resources>

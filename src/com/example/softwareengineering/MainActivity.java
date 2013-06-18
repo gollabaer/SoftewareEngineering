@@ -27,11 +27,9 @@ public class MainActivity extends Activity {
 	 * , öffnet das Fenster mit der Benutzercodegenerierung
 	 */
 	public void usercode(View view){
-		setContentView(R.layout.usercode);
+		setContentView(R.layout.activity_usercode);
 	}
 	
-	public void optionen(View view){
-		setContentView(R.layout.optionen);
-	}
+	
 
 }
