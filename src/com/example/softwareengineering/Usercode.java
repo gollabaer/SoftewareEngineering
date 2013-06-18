@@ -12,7 +12,6 @@ public class Usercode extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usercode);
 		// Show the Up button in the action bar.
