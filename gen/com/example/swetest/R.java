@@ -34,7 +34,8 @@ public final class R {
         public static final int TextViewAfternoon=0x7f080014;
         public static final int TextViewEvening=0x7f08001a;
         public static final int TextViewLunch=0x7f08000f;
-        public static final int action_settings=0x7f08002b;
+        public static final int action_settings=0x7f080031;
+        public static final int button1=0x7f080030;
         public static final int buttonCancel=0x7f080004;
         public static final int buttonCode=0x7f080005;
         public static final int buttonInput=0x7f080007;
@@ -43,6 +44,11 @@ public final class R {
         public static final int buttonOk=0x7f08001b;
         public static final int buttonTime=0x7f080006;
         public static final int buttonYes=0x7f080003;
+        public static final int editText1=0x7f08002b;
+        public static final int editText2=0x7f08002c;
+        public static final int editText3=0x7f08002d;
+        public static final int editText4=0x7f08002e;
+        public static final int editText5=0x7f08002f;
         public static final int editTextCode=0x7f080001;
         public static final int editTextNumber=0x7f080024;
         public static final int radio10=0x7f08000c;
@@ -78,12 +84,15 @@ public final class R {
         public static final int activity_main=0x7f030001;
         public static final int activity_set_alarms=0x7f030002;
         public static final int activity_statistic=0x7f030003;
+        public static final int activity_usercode=0x7f030004;
     }
     public static final class menu {
         public static final int generade_code=0x7f070000;
         public static final int main=0x7f070001;
-        public static final int set_alarms=0x7f070002;
-        public static final int statistic=0x7f070003;
+        public static final int optionen=0x7f070002;
+        public static final int set_alarms=0x7f070003;
+        public static final int statistic=0x7f070004;
+        public static final int usercode=0x7f070005;
     }
     public static final class string {
         public static final int CodeExample=0x7f05000d;
