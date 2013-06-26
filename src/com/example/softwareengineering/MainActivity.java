@@ -1,6 +1,7 @@
 package com.example.softwareengineering;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -27,7 +28,13 @@ public class MainActivity extends Activity {
 	 * , öffnet das Fenster mit der Benutzercodegenerierung
 	 */
 	public void usercode(View view){
-		setContentView(R.layout.activity_usercode);
+		Intent intent = new Intent(this, Usercode.class);
+		startActivity(intent);
+	}
+	
+	public void optionen(View view){
+		Intent intent = new Intent(this, Optionen.class);
+		startActivity(intent);
 	}
 	
 	

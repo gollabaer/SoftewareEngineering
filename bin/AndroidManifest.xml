@@ -30,6 +30,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.softwareengineering.MainActivity" />
         </activity>
+        <activity
+            android:name="com.example.softwareengineering.Optionen"
+            android:label="@string/title_activity_optionen"
+            android:parentActivityName="com.example.softwareengineering.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.softwareengineering.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
