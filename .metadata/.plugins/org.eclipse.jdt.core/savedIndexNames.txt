@@ -1,2 +1,0 @@
-INDEX VERSION 1.126+C:\Users\Kevin\Desktop\SWE-Project\.metadata\.plugins\org.eclipse.jdt.core
-1061702613.index

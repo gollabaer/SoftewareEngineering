@@ -8,44 +8,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+    <Button
+        android:id="@+id/buttonCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonTime"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/buttonTime"
+        android:layout_marginBottom="38dp"
+        android:text="@string/title_activity_generade_code"
+        android:onClick="startCodeGenerator" />
+
+    <Button
+        android:id="@+id/buttonInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCode"
+        android:layout_alignLeft="@+id/buttonCode"
+        android:layout_alignRight="@+id/buttonTime"
+        android:layout_marginBottom="32dp"
+        android:text="@string/title_activity_statistic"
+        android:onClick="startStatistic" />
+
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:text="Willkommen!"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="71dp"
+        android:text="@string/MenuText"
+        android:textSize="40sp" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_above="@+id/buttonInput"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="Erstelle deinen Benutzercode"
-        android:onClick="usercode" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignRight="@+id/button2"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="34dp"
-        android:text="Eingabe Starten" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="31dp"
-        android:text="Optionen" />
+        android:layout_marginBottom="40dp"
+        android:onClick="startTime"
+        android:text="@string/title_activity_set_alarms" />
 
 </RelativeLayout>

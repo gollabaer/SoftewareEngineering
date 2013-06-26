@@ -1,0 +1,228 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SetAlarms" >
+
+    <TextView
+        android:id="@+id/textViewMorning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroupMorning"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="21dp"
+        android:text="@string/First" />
+    
+    
+    <RadioGroup
+        android:id="@+id/radioGroupMorning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewMorning"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio9"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/t9"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio10"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t10"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio11"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t11"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio12"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t12"
+            android:textSize="12sp" />
+
+    </RadioGroup>
+    
+    <TextView
+        android:id="@+id/TextViewLunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioGroupMorning"
+        android:text="@string/Second" />
+    
+
+    <RadioGroup
+        android:id="@+id/radioGroupLunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TextViewLunch"
+        android:orientation="horizontal" >
+        
+
+        <RadioButton
+            android:id="@+id/radio13"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/t13" 
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio14"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t14"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio15"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t15"
+            android:textSize="12sp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/TextViewAfternoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioGroupLunch"
+        android:text="@string/Third" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupAfternoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TextViewAfternoon"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio16"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/t16"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio17"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t17" 
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio18"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t18"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio19"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t19"
+            android:textSize="12sp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/TextViewEvening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioGroupAfternoon"
+        android:text="@string/Fourth" />
+
+    <Button
+        android:id="@+id/buttonOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroupEvening"
+        android:layout_below="@+id/radioGroupEvening"
+        android:layout_marginTop="16dp"
+        android:text="@string/ok" />
+
+    <Button
+        android:id="@+id/ButtonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonOk"
+        android:layout_alignBottom="@+id/buttonOk"
+        android:layout_alignRight="@+id/radioGroupMorning"
+        android:layout_marginRight="16dp"
+        android:text="@string/cancel"
+        android:onClick="close" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupEvening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TextViewEvening"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio20"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/t20"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio21"
+            style="@layout/activity_set_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t21"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t22"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/t23"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+</RelativeLayout>
