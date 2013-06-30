@@ -24,6 +24,7 @@
     <string name="CodeQuest">Moechten Sie dieses Konto jetzt einrichten?</string>
     <string name="CodeInstruct">Bitte tragen sie ihren Code wie folgt ein:\nDritter Buchstabe von:\n1. Vorname der Mutter\n2. Vorname des Vaters\n3. Geburtsort\n4. aktuelle Strasse\n5. Geburtsmonat</string>
     <string name="CodeExample">z.B. ABHRN</string>
+    <string name="CodeError">Der eingegebene Code entspricht nicht den Anforderungen!</string>
     
     <!--Main Activity-->
     <string name="MenuText">Hauptmenu</string>

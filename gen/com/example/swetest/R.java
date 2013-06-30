@@ -34,22 +34,16 @@ public final class R {
         public static final int TextViewAfternoon=0x7f080014;
         public static final int TextViewEvening=0x7f08001a;
         public static final int TextViewLunch=0x7f08000f;
-        public static final int action_settings=0x7f080031;
-        public static final int button1=0x7f080030;
-        public static final int buttonCancel=0x7f080004;
+        public static final int action_settings=0x7f08002b;
+        public static final int buttonCancel=0x7f080000;
         public static final int buttonCode=0x7f080005;
         public static final int buttonInput=0x7f080007;
         public static final int buttonInputCancel=0x7f08002a;
         public static final int buttonInputOk=0x7f080029;
         public static final int buttonOk=0x7f08001b;
         public static final int buttonTime=0x7f080006;
-        public static final int buttonYes=0x7f080003;
-        public static final int editText1=0x7f08002b;
-        public static final int editText2=0x7f08002c;
-        public static final int editText3=0x7f08002d;
-        public static final int editText4=0x7f08002e;
-        public static final int editText5=0x7f08002f;
-        public static final int editTextCode=0x7f080001;
+        public static final int buttonYes=0x7f080001;
+        public static final int editTextCode=0x7f080004;
         public static final int editTextNumber=0x7f080024;
         public static final int radio10=0x7f08000c;
         public static final int radio11=0x7f08000d;
@@ -72,7 +66,7 @@ public final class R {
         public static final int radioGroupMorning=0x7f08000a;
         public static final int textMenu=0x7f080008;
         public static final int textViewHours=0x7f080025;
-        public static final int textViewInstructions=0x7f080000;
+        public static final int textViewInstructions=0x7f080003;
         public static final int textViewMessage=0x7f080022;
         public static final int textViewMinutes=0x7f080026;
         public static final int textViewMorning=0x7f080009;
@@ -84,7 +78,6 @@ public final class R {
         public static final int activity_main=0x7f030001;
         public static final int activity_set_alarms=0x7f030002;
         public static final int activity_statistic=0x7f030003;
-        public static final int activity_usercode=0x7f030004;
     }
     public static final class menu {
         public static final int generade_code=0x7f070000;
@@ -95,6 +88,7 @@ public final class R {
         public static final int usercode=0x7f070005;
     }
     public static final class string {
+        public static final int CodeError=0x7f05000e;
         public static final int CodeExample=0x7f05000d;
         public static final int CodeInstruct=0x7f05000c;
         /** Generate Code Activity
@@ -102,17 +96,17 @@ public final class R {
         public static final int CodeQuest=0x7f05000b;
         /**  Statistics Activity 
          */
-        public static final int First=0x7f05001e;
-        public static final int Fourth=0x7f050021;
-        public static final int Hours=0x7f050024;
-        public static final int InputMessage=0x7f050022;
+        public static final int First=0x7f05001f;
+        public static final int Fourth=0x7f050022;
+        public static final int Hours=0x7f050025;
+        public static final int InputMessage=0x7f050023;
         /** Main Activity
          */
-        public static final int MenuText=0x7f05000e;
-        public static final int Minutes=0x7f050025;
-        public static final int Number=0x7f050023;
-        public static final int Second=0x7f05001f;
-        public static final int Third=0x7f050020;
+        public static final int MenuText=0x7f05000f;
+        public static final int Minutes=0x7f050026;
+        public static final int Number=0x7f050024;
+        public static final int Second=0x7f050020;
+        public static final int Third=0x7f050021;
         public static final int action_reply=0x7f050006;
         /** Irgendetwas automtisch generiertes
          */
@@ -129,23 +123,23 @@ public final class R {
         /** Button Captions
          */
         public static final int ok=0x7f050007;
-        public static final int t10=0x7f050010;
-        public static final int t11=0x7f050011;
-        public static final int t12=0x7f050012;
-        public static final int t13=0x7f050013;
-        public static final int t14=0x7f050014;
-        public static final int t15=0x7f050015;
-        public static final int t16=0x7f050016;
-        public static final int t17=0x7f050017;
-        public static final int t18=0x7f050018;
-        public static final int t19=0x7f050019;
-        public static final int t20=0x7f05001a;
-        public static final int t21=0x7f05001b;
-        public static final int t22=0x7f05001c;
-        public static final int t23=0x7f05001d;
+        public static final int t10=0x7f050011;
+        public static final int t11=0x7f050012;
+        public static final int t12=0x7f050013;
+        public static final int t13=0x7f050014;
+        public static final int t14=0x7f050015;
+        public static final int t15=0x7f050016;
+        public static final int t16=0x7f050017;
+        public static final int t17=0x7f050018;
+        public static final int t18=0x7f050019;
+        public static final int t19=0x7f05001a;
+        public static final int t20=0x7f05001b;
+        public static final int t21=0x7f05001c;
+        public static final int t22=0x7f05001d;
+        public static final int t23=0x7f05001e;
         /**  Times 
          */
-        public static final int t9=0x7f05000f;
+        public static final int t9=0x7f050010;
         public static final int title_activity_generade_code=0x7f050003;
         public static final int title_activity_set_alarms=0x7f050002;
         public static final int title_activity_statistic=0x7f050001;

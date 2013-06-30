@@ -8,46 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".GeneradeCode" >
 
-    <TextView
-        android:id="@+id/textViewInstructions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:hint="@string/CodeExample"
-        android:text="@string/CodeInstruct"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/editTextCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewInstructions"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="@string/CodeExample" />
-
-    <TextView
-        android:id="@+id/textViewQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewInstructions"
-        android:layout_below="@+id/editTextCode"
-        android:layout_marginTop="19dp"
-        android:text="@string/CodeQuest"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/buttonYes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewQuestion"
-        android:layout_below="@+id/textViewQuestion"
-        android:layout_marginTop="22dp"
-        android:text="@string/ok" />
-
     <Button
         android:id="@+id/buttonCancel"
         android:layout_width="wrap_content"
@@ -56,6 +16,47 @@
         android:layout_alignBottom="@+id/buttonYes"
         android:layout_alignRight="@+id/textViewQuestion"
         android:onClick="close"
-        android:text="@string/cancel"/>
+        android:text="@string/cancel" />
+
+    <TextView
+        android:id="@+id/textViewInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/CodeExample"
+        android:text="@string/CodeInstruct"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/buttonYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewQuestion"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="18dp"
+        android:onClick="onOk"
+        android:text="@string/ok" />
+
+    <TextView
+        android:id="@+id/textViewQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCancel"
+        android:layout_alignLeft="@+id/textViewInstructions"
+        android:layout_marginBottom="20dp"
+        android:text="@string/CodeQuest"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/editTextCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewInstructions"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/CodeExample" />
 
 </RelativeLayout>
