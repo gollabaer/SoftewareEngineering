@@ -90,7 +90,8 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/t13" 
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
 
         <RadioButton
             android:id="@+id/radio14"
@@ -98,7 +99,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t14"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
 
         <RadioButton
             android:id="@+id/radio15"
@@ -106,7 +108,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t15"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
 
     </RadioGroup>
 
@@ -116,7 +119,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/radioGroupLunch"
-        android:text="@string/Third" />
+        android:text="@string/Third" 
+        android:onClick="radioButtonClick"/>
 
     <RadioGroup
         android:id="@+id/radioGroupAfternoon"
@@ -124,7 +128,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/TextViewAfternoon"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:onClick="radioButtonClick" >
 
         <RadioButton
             android:id="@+id/radio16"
@@ -133,7 +138,8 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/t16"
-            android:textSize="12sp" />
+            android:textSize="12sp" 
+            android:onClick="radioButtonClick"/>
 
         <RadioButton
             android:id="@+id/radio17"
@@ -141,7 +147,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t17" 
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
 
         <RadioButton
             android:id="@+id/radio18"
@@ -149,7 +156,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t18"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
 
         <RadioButton
             android:id="@+id/radio19"
@@ -157,7 +165,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t19"
-            android:textSize="12sp" />
+            android:textSize="12sp" 
+            android:onClick="radioButtonClick"/>
 
     </RadioGroup>
 
@@ -176,7 +185,8 @@
         android:layout_alignLeft="@+id/radioGroupEvening"
         android:layout_below="@+id/radioGroupEvening"
         android:layout_marginTop="16dp"
-        android:text="@string/ok" />
+        android:text="@string/ok" 
+        android:onClick="onOk"/>
 
     <Button
         android:id="@+id/ButtonCancel"
@@ -204,7 +214,8 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/t20"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
 
         <RadioButton
             android:id="@+id/radio21"
@@ -212,21 +223,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t21"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
 
         <RadioButton
             android:id="@+id/radio22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t22"
-            android:textSize="12sp" />
+            android:textSize="12sp" 
+            android:onClick="radioButtonClick"/>
 
         <RadioButton
             android:id="@+id/radio23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/t23"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:onClick="radioButtonClick" />
     </RadioGroup>
 
 </RelativeLayout>
