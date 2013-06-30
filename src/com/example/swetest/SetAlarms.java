@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.RadioButton;
 
 public class SetAlarms extends Activity {
 
+	private static int int1, int2, int3;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,6 +25,15 @@ public class SetAlarms extends Activity {
 
 	public void close(View view){
 		super.onBackPressed();
+	}
+	
+	public void radioButtonClick(View view){
+		
+		if(((RadioButton) view).isChecked()){
+			
+		 System.out.println(view.getId());
+			
+		}
 	}
 	
 }
