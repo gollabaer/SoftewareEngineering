@@ -114,7 +114,8 @@ public final class R {
         public static final int Minutes=0x7f050026;
         public static final int Number=0x7f050024;
         public static final int Second=0x7f050020;
-        public static final int StatisticsError=0x7f050027;
+        public static final int StatisticsNumberError=0x7f050028;
+        public static final int StatisticsTimeError=0x7f050027;
         public static final int Third=0x7f050021;
         public static final int action_reply=0x7f050006;
         /**  Irgendetwas automtisch generiertes 
@@ -125,7 +126,7 @@ public final class R {
          */
         public static final int app_name=0x7f050000;
         public static final int cancel=0x7f050008;
-        public static final int hello_world=0x7f050029;
+        public static final int hello_world=0x7f05002a;
         /**  Notification 
          */
         public static final int input_notification_text=0x7f050009;
@@ -150,7 +151,7 @@ public final class R {
         /**  Times 
          */
         public static final int t9=0x7f050010;
-        public static final int title_activity_csv_activity=0x7f050028;
+        public static final int title_activity_csv_activity=0x7f050029;
         public static final int title_activity_generade_code=0x7f050003;
         public static final int title_activity_set_alarms=0x7f050002;
         public static final int title_activity_statistic=0x7f050001;

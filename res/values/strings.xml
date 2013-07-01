@@ -55,7 +55,8 @@
     <string name="Number">Anzahl:</string>
     <string name="Hours">Stunden:</string>
     <string name="Minutes">Minuten:</string>
-    <string name="StatisticsError">Sie können nicht mehr Zeit eintragen, als seit dem letzten Alarm vergangen ist.</string>
+    <string name="StatisticsTimeError">Bitte korrigieren Sie Ihre Zeitangabe.</string>
+    <string name="StatisticsNumberError">Bitte korrigieren Sie Ihre angebene Anzahl an Kontakten.</string>
     
     
     <string name="title_activity_csv_activity">CSV_activity</string>

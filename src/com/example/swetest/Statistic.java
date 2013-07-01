@@ -22,6 +22,8 @@ public class Statistic extends Activity {
 
 	private static final String LINE = System.getProperty("line.separator");
 	private static boolean valid = false;
+	private static boolean timevalid = true;
+	private static boolean numbervalid = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +48,20 @@ public class Statistic extends Activity {
 	public void onOk(View view) {
 
 		EditText NumberEdit = (EditText) findViewById(R.id.editTextNumber);
-		Integer numberOfContacts = Integer.parseInt(NumberEdit.getText()
-				.toString());
+		String numberOfContacts = NumberEdit.getText().toString();
 
 		EditText HoursEdit = (EditText) findViewById(R.id.EditTextHours);
-		Integer hours = Integer.parseInt(HoursEdit.getText().toString());
+		String hours = HoursEdit.getText().toString();
 
 		EditText MinutesEdit = (EditText) findViewById(R.id.EditTextMinutes);
-		Integer minutes = Integer.parseInt(MinutesEdit.getText().toString());
+		String minutes = MinutesEdit.getText().toString();
 
 		// System.out.println(code.toString());
-		valid = validate(hours, minutes);
+				
+		valid = validate(numberOfContacts, hours, minutes);
 		if (valid) {
 			// System.out.println("true");
-			boolean success = send(numberOfContacts, hours, minutes);
+			boolean success = send(Integer.parseInt(numberOfContacts), Integer.parseInt(hours), Integer.parseInt(minutes));
 			if (!success) {
 				throw new SecurityException("Couldn't hand over user code.");
 			}
@@ -69,7 +71,14 @@ public class Statistic extends Activity {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Fehler");
 			final Resources res = this.getResources();
-			alertDialog.setMessage(res.getString(R.string.StatisticsError));
+			if (!numbervalid){
+				numbervalid = true;
+				alertDialog.setMessage(res.getString(R.string.StatisticsNumberError));
+			}
+			if (!timevalid){
+				timevalid = true;
+				alertDialog.setMessage(res.getString(R.string.StatisticsTimeError));
+			}
 			alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,
 					res.getString(R.string.ok),
 					new DialogInterface.OnClickListener() {
@@ -81,8 +90,23 @@ public class Statistic extends Activity {
 		}
 	}
 
-	public static boolean validate(int hours, int minutes) {
+	public static boolean validate(String snumber, String shours, String sminutes) {
+		
+		if (snumber.isEmpty()){
+			numbervalid = false;
+			return false;
+		}
+		if (shours.isEmpty()){
+			timevalid = false;
+			return false;
+		}
+		if (sminutes.isEmpty()){
+			timevalid = false;
+			return false;
+		}
 
+		int hours =  Integer.parseInt(shours);
+		int minutes =  Integer.parseInt(sminutes);
 		// aktuelle - getLastTime() // Millisekunden
 
 		long diff = System.currentTimeMillis() - 10;// getLastTime();
@@ -90,6 +114,7 @@ public class Statistic extends Activity {
 		minutes = (int) TimeUnit.MINUTES.toMillis(minutes);
 
 		if (diff - (hours + minutes) < 0) {
+			timevalid = false;
 			return false;
 		} else {
 			return true;
@@ -115,7 +140,7 @@ public class Statistic extends Activity {
 				Locale.GERMANY);
 		String datum = dateFormat.format(new java.util.Date());
 
-		SimpleDateFormat uhrFormat = new SimpleDateFormat("HH-mm-ss",
+		SimpleDateFormat uhrFormat = new SimpleDateFormat("HH:mm",
 				Locale.GERMANY);
 		String uhrzeit = uhrFormat.format(new java.util.Date());
 
@@ -125,8 +150,8 @@ public class Statistic extends Activity {
 		// Erstellt String zum schreiben
 		String stringToWrite =
 
-		getUsercodeAsString() + "::" + datum + "::" + getCurrentAlarmTimeAsInt() + "::"
-				+ uhrzeit + "::" + "0" + "::" + kontakte + "::" + stunden
+		getUsercodeAsString() + "::" + datum + "::" + "ALARMZEIT" + "::"
+				+ uhrzeit + "::" + "ABBRUCH" + "::" + kontakte + "::" + stunden
 				+ "::" + minuten;
 
 		FileOutputStream outputStream;
@@ -144,40 +169,10 @@ public class Statistic extends Activity {
 		}
 	}
 
-	
-	
-	public int getCurrentAlarmTimeAsInt(){
-		
-		
-		SharedPreferences preferences = PreferenceManager
-				.getDefaultSharedPreferences(this);
-
-
-		
-		
-		return  preferences.getInt("AlarmTime", -77);
-		
-	}
-	
-	
 	public boolean send(int numberOfContacts, int hours, int minutes) {
 
 		createLine(numberOfContacts, hours, minutes);
 		finish();
-		
-		
-		//LastTime Šndern!!!
-		
-		SharedPreferences preferences = PreferenceManager
-				.getDefaultSharedPreferences(this);
-
-		
-		SharedPreferences.Editor editor = preferences.edit();
-		
-		editor.putInt("lastTime", getCurrentAlarmTimeAsInt() );
-		editor.commit();
-
-		
 
 		return true;
 	}
