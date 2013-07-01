@@ -129,10 +129,7 @@ public String getUsercodeAsString(){
 		createCSV();
 		
 		finish();
-		
-		
-		
-		
+	
 		return true;
 	}
 	
