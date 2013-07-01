@@ -115,7 +115,7 @@ public class Statistic extends Activity {
 				Locale.GERMANY);
 		String datum = dateFormat.format(new java.util.Date());
 
-		SimpleDateFormat uhrFormat = new SimpleDateFormat("HH:mm",
+		SimpleDateFormat uhrFormat = new SimpleDateFormat("HH-mm-ss",
 				Locale.GERMANY);
 		String uhrzeit = uhrFormat.format(new java.util.Date());
 
