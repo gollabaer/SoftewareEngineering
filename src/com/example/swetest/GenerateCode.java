@@ -89,12 +89,12 @@ public String getUsercodeAsString(){
 		
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		String ausgabeUsercode = preferences.getString("Usercode", "");
 		
-		if (!ausgabeUsercode.equalsIgnoreCase("")) {
-		return ausgabeUsercode;}
+		String ausgabeUsercode = preferences.getString("Usercode", "UNDEF");
 		
-		else return "UNDEF";
+		
+		return ausgabeUsercode;
+		
 }
 	
 	
@@ -129,10 +129,7 @@ public String getUsercodeAsString(){
 		createCSV();
 		
 		finish();
-		
-		
-		
-		
+	
 		return true;
 	}
 	
