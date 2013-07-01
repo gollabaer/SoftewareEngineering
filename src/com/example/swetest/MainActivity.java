@@ -68,10 +68,7 @@ public class MainActivity extends Activity {
 		//InputNotification.notify(this, "10:00", 1);
 	}
 	
-	public void test(View view){
-		setup();
-		setAlarm(21);
-	}
+	
 	
 	
 	//Hilfsvariablen um die Alarmzeiten zu übergeben
