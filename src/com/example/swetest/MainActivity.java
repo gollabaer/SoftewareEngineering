@@ -1,16 +1,23 @@
 package com.example.swetest;
 
+import java.io.FileOutputStream;
+
 import android.view.View;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.view.Menu;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
@@ -120,4 +127,63 @@ public class MainActivity extends Activity {
 		unregisterReceiver(br);
 		super.onDestroy();
 	}
+	
+	
+
+	
+	
+	public static void setUserCode(Context context, String actualUsercode) {
+
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+
+		SharedPreferences.Editor editor = preferences.edit();
+
+		editor.putString("Usercode", actualUsercode);
+		editor.commit();
+
+		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+
+		alertDialog.setTitle("Succes!");
+		alertDialog.setMessage("Code erfolgreich gespeichert");
+		alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+						
+						
+					}
+				});
+		alertDialog.show();
+
+	}
+	
+	
+
+	
+	
+	
+public  void createCSV(Context context) {
+
+	
+
+	// create csv file
+	String filename = "USERCODE.txt";
+
+	FileOutputStream outputStream;
+
+	try {
+		outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+		outputStream.flush();
+		outputStream.close();
+		
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	
+	}
+
+}
+	
+	
 }
