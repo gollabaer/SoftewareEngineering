@@ -26,7 +26,7 @@ public class SetAlarms extends Activity {
 		setContentView(R.layout.activity_set_alarms);
 		
 		
-		RadioButton rbutton9 = (RadioButton) findViewById(R.id.radio9);
+		RadioButton rbutton9  = (RadioButton) findViewById(R.id.radio9 );
 		RadioButton rbutton10 = (RadioButton) findViewById(R.id.radio10);
 		RadioButton rbutton11 = (RadioButton) findViewById(R.id.radio11);
 		RadioButton rbutton12 = (RadioButton) findViewById(R.id.radio12);
