@@ -126,7 +126,7 @@ public class Statistic extends Activity {
 		String stringToWrite =
 
 		getUsercodeAsString() + "::" + datum + "::" + getCurrentAlarmTimeAsInt() + "::"
-				+ uhrzeit + "::" + "ABBRUCH" + "::" + kontakte + "::" + stunden
+				+ uhrzeit + "::" + "0" + "::" + kontakte + "::" + stunden
 				+ "::" + minuten;
 
 		FileOutputStream outputStream;
@@ -171,6 +171,7 @@ public class Statistic extends Activity {
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
 
+		
 		SharedPreferences.Editor editor = preferences.edit();
 		
 		editor.putInt("lastTime", getCurrentAlarmTimeAsInt() );
