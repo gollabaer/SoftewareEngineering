@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
 	/**
 	 * Legt Elemnte für AlarmManager an.
 	 */
-	private void setup() {
+	public void setup() {
 
 		br = new BroadcastReceiver() {
 
@@ -136,6 +136,9 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	
+	
+	
 	/**
 	 * Zerstört alarmzeiten
 	 */

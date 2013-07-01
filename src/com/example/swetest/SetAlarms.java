@@ -1,7 +1,16 @@
 package com.example.swetest;
 
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
 import android.widget.RadioButton;
@@ -16,11 +25,13 @@ public class SetAlarms extends Activity {
 		
 		//TODO Read Times from XML and apply them on ints
 		
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
 		
-		int1 = 9;
-		int2 = 14;
-		int3 = 19;
-		int4 = 23;
+		int1 = preferences.getInt("Zeit1", 9);
+		int2 = preferences.getInt("Zeit2", 13);
+		int3 = preferences.getInt("Zeit3", 16);
+		int4 = preferences.getInt("Zeit4", 20);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_alarms);
@@ -73,6 +84,53 @@ public class SetAlarms extends Activity {
 	public void onOk(View view){
 		
 		System.out.println("Zeit1: "+ int1 + " Zeit2: "+ int2 + " Zeit3: " + int3+ " Zeit4: "+int4);
+		
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		SharedPreferences.Editor editor = preferences.edit();
+
+		editor.putInt("Zeit1", int1);
+		editor.commit();
+		
+
+		editor.putInt("Zeit2", int2);
+		editor.commit();
+		
+
+		editor.putInt("Zeit3", int3);
+		editor.commit();
+		
+
+		editor.putInt("Zeit4", int4);
+		editor.commit();
+		
+		
+		Long curTime = MainActivity.getTime();
+		
+		curTime = curTime/(1000*60*60);
+		
+		
+		if(curTime>=int4 || curTime < int1){
+			setup();
+			setAlarm(int1);
+		}
+		
+		if(curTime>= int3 && curTime < int4) {
+			setup();
+			setAlarm(int4);
+		}
+		
+		if(curTime>= int2 && curTime < int3) {
+			setup();
+			setAlarm(int3);
+		}
+		
+		if(curTime>= int1 && curTime < int2) {
+			setup();
+			setAlarm(int2);
+		}
+		
 		super.onBackPressed();
 		//TODO Save Times in XML
 	}
@@ -174,5 +232,89 @@ public class SetAlarms extends Activity {
 		}
 		
 	}
+	
+	
+	
+	
+	
+	
+	//COPY OF THE ALARMSMANAGERSTUFF------------------------------------------------------------------------------
+	
+
+	//Hilfsvariablen um die Alarmzeiten zu übergeben
+	final static private long ONE_SECOND = 1000;
+	final static private long ONE_MINUTE = ONE_SECOND * 60;
+	final static private long ONE_HOUR = ONE_MINUTE * 60;
+	final static private long ONE_DAY = ONE_HOUR * 24;
+
+	PendingIntent pi;
+
+	BroadcastReceiver br;
+
+	AlarmManager am;
+
+	/**
+	 * Legt Elemnte für AlarmManager an.
+	 */
+	public void setup() {
+
+		br = new BroadcastReceiver() {
+
+			@Override
+			public void onReceive(Context c, Intent i) {
+
+				//Definiert die Ausgabe
+				InputNotification.notify(c, "Mario", 1);
+			}
+
+		};
+
+		registerReceiver(br, new IntentFilter("com.authorwjf.wakeywakey"));
+
+		pi = PendingIntent.getBroadcast(this, 0, new Intent(
+				"com.authorwjf.wakeywakey"), 0);
+
+		am = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
+
+	}
+
+	/**
+	 * 
+	 * @return aktuelle Tageszeit
+	 */
+	public static long getTime(){
+		long time = System.currentTimeMillis();
+		
+		while(time>ONE_DAY){
+			time = time - ONE_DAY;
+		}
+		
+		return time;
+	}
+	
+	/**
+	 * Setz die Alarmzeit
+	 * 
+	 * @param l Uhrzeit(z.B. 15 für 15Uhr)
+	 */
+	public void setAlarm(long l) {
+		if(getTime()>l*ONE_HOUR)
+			System.out.println(SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)));
+		else
+			System.out.println(SystemClock.elapsedRealtime() + (ONE_HOUR*l-getTime()));
+		System.out.println(l);
+		System.out.println(SystemClock.elapsedRealtime());
+		if(getTime()>l*ONE_HOUR){
+			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+					SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)), pi);
+		}
+		else{
+			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+					SystemClock.elapsedRealtime() + (ONE_HOUR*l-getTime()), pi);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------------------
+	
 	
 }
