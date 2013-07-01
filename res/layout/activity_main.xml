@@ -50,15 +50,4 @@
         android:onClick="startTime"
         android:text="@string/title_activity_set_alarms" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonTime"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="31dp"
-        android:text="Button"
-        android:onClick="test" />
-
 </RelativeLayout>

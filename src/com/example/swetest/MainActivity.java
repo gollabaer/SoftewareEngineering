@@ -43,11 +43,7 @@ public class MainActivity extends Activity {
 		//startActivity(intent);
 		InputNotification.notify(this, "10:00", 1);
 	}
-	
-	public void test(View view){
-		setup();
-		setAlarm(5);
-	}
+
 	
 	final static private long ONE_SECOND = 1000;
 	final static private long ONE_MINUTE = ONE_SECOND * 60;
@@ -67,7 +63,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onReceive(Context c, Intent i) {
 
-//				Toast.makeText(c, "Rise and Shine!", Toast.LENGTH_LONG).show();
 				InputNotification.notify(c, "Mario", 1);
 			}
 
