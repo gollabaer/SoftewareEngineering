@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 	
 	
 	public void startStatistic(View view){
-		Intent intent = new Intent(this, SetAlarms.class);
+		Intent intent = new Intent(this, Statistic.class);
 		startActivity(intent);
 		//InputNotification.notify(this, "10:00", 1);
 	}
