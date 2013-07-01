@@ -34,6 +34,10 @@
             android:name="com.example.swetest.Statistic"
             android:label="@string/title_activity_statistic" >
         </activity>
+        <activity
+            android:name="com.example.swetest.CSV_activity"
+            android:label="@string/title_activity_csv_activity" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.VIBRATE" />
