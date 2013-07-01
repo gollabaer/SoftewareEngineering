@@ -50,7 +50,7 @@
         android:onClick="startTime"
         android:text="@string/title_activity_set_alarms" />
 
-<<<<<<< HEAD
+
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -60,13 +60,7 @@
         android:layout_marginLeft="29dp"
         android:layout_marginTop="31dp"
         android:text="Button"
-        android:onClick="test" 
-        
-        
-        
-        
-        
-        />
+        android:onClick="test"/>
 
     <Button
         android:id="@+id/button2"
@@ -77,6 +71,4 @@
         android:text="CSV-Button"
         android:onClick="startCSV" />
 
-=======
->>>>>>> 24fb965c0930e0e959744de12ac48a12f115603c
 </RelativeLayout>
