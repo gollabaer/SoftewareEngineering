@@ -51,7 +51,7 @@
     <string name="Second">Zweites Interval:</string>
     <string name="Third">Drittes Interval:</string>
     <string name="Fourth">Viertes Interval:</string>
-    <string name="InputMessage">Mit wievielen Interaktionspartnern hatte sie seit %1$s Kontakt und wie lange?</string>
+    <string name="InputMessage">Mit wievielen Interaktionspartnern hatte sie seit %1$s Uhr Kontakt und wie lange?</string>
     <string name="Number">Anzahl:</string>
     <string name="Hours">Stunden:</string>
     <string name="Minutes">Minuten:</string>
