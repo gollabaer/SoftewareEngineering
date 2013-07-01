@@ -1,6 +1,8 @@
 package com.example.swetest;
 
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import android.view.View;
 import android.os.Bundle;
@@ -19,8 +21,13 @@ import android.content.SharedPreferences;
 import android.view.Menu;
 import android.widget.EditText;
 
+
 public class MainActivity extends Activity {
 
+	
+	
+	private static final String LINE = System.getProperty("line.separator");
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -154,6 +161,9 @@ public class MainActivity extends Activity {
 	
 	public static void setUserCode(Context context, String actualUsercode) {
 
+		
+		
+		
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(context);
 
@@ -161,7 +171,16 @@ public class MainActivity extends Activity {
 
 		editor.putString("Usercode", actualUsercode);
 		editor.commit();
+		
+		
+		editor.putInt("lastTime", -77);
+		editor.commit();
 
+		
+		
+		
+		
+		
 		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
 
 		alertDialog.setTitle("Succes!");
@@ -181,29 +200,19 @@ public class MainActivity extends Activity {
 	
 
 	
-	
-	
-public  void createCSV(Context context) {
-
-	
-
-	// create csv file
-	String filename = "USERCODE.txt";
-
-	FileOutputStream outputStream;
-
-	try {
-		outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-		outputStream.flush();
-		outputStream.close();
+public String getUsercodeAsString(){
 		
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	
-	}
-
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		
+		String ausgabeUsercode = preferences.getString("Usercode", "UNDEF");
+		
+		
+		return ausgabeUsercode;
+		
 }
 	
 	
+
+
 }

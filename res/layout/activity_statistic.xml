@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewNumber"
         android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="phone" />
+        android:inputType="numberDecimal"
+        android:ems="10"/>
 
     <TextView
         android:id="@+id/textViewHours"
@@ -62,8 +62,8 @@
         android:layout_alignBottom="@+id/EditTextMinutes"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/textViewNumber"
-        android:ems="10"
-        android:inputType="phone" />
+       	android:ems="10"
+        android:inputType="numberDecimal"/>
 
     <EditText
         android:id="@+id/EditTextMinutes"
@@ -72,7 +72,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/textViewNumber"
         android:ems="10"
-        android:inputType="phone" />
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/buttonInputOk"
@@ -81,6 +81,7 @@
         android:layout_alignLeft="@+id/EditTextHours"
         android:layout_below="@+id/EditTextHours"
         android:layout_marginTop="70dp"
+        android:onClick="onOk"
         android:text="@string/ok" />
 
     <Button
