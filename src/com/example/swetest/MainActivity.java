@@ -38,6 +38,16 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void startCSV(View view){
+		
+		Intent intent = new Intent (this, CSV_activity.class);
+		startActivity(intent);
+		finish(); 
+		
+		
+	}
+	
+	
 	public void startStatistic(View view){
 		//Intent intent = new Intent(this, SetAlarms.class);
 		//startActivity(intent);
