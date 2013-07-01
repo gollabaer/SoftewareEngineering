@@ -63,9 +63,9 @@ public class MainActivity extends Activity {
 	
 	
 	public void startStatistic(View view){
-		//Intent intent = new Intent(this, SetAlarms.class);
-		//startActivity(intent);
-		InputNotification.notify(this, "10:00", 1);
+		Intent intent = new Intent(this, SetAlarms.class);
+		startActivity(intent);
+		//InputNotification.notify(this, "10:00", 1);
 	}
 	
 	public void test(View view){
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 	/**
 	 * Legt Elemnte für AlarmManager an.
 	 */
-	private void setup() {
+	public void setup() {
 
 		br = new BroadcastReceiver() {
 
@@ -143,6 +143,9 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	
+	
+	
 	/**
 	 * Zerstört alarmzeiten
 	 */

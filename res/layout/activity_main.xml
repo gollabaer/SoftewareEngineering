@@ -48,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:onClick="startTime"
-        android:text="@string/title_activity_set_alarms" />
+        android:text="@string/title_activity_set_alarms"/>
 
 
     <Button
