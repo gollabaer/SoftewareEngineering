@@ -1,18 +1,26 @@
 package com.example.swetest;
 
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
 public class Statistic extends Activity {
 	
+	
+	private static final String LINE = System.getProperty("line.separator");
 	private static boolean valid = false;
 
 	@Override
@@ -85,8 +93,82 @@ public class Statistic extends Activity {
 
 	}
 	
+	
+public String getUsercodeAsString(){
+		
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		
+		String ausgabeUsercode = preferences.getString("Usercode", "UNDEF");
+		
+		
+		return ausgabeUsercode;
+		
+}
+	
+	
+public void createLine(int kontakte,int stunden, int minuten) {
+
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy",
+				Locale.GERMANY);
+		String datum = dateFormat.format(new java.util.Date());
+		
+		SimpleDateFormat uhrFormat = new SimpleDateFormat("HH:mm",
+				Locale.GERMANY);
+		String uhrzeit = uhrFormat.format(new java.util.Date());
+		
+		
+		
+		// create csv filename
+		String filename = getUsercodeAsString()+".csv";
+		
+		
+		//Erstellt String zum schreiben
+		String stringToWrite = 
+				
+				
+					getUsercodeAsString()
+				+	"::"
+				+ 	datum
+				+	"::"
+				+	"ALARMZEIT"
+				+	"::"
+				+	uhrzeit
+				+ 	"::"
+				+	"ABBRUCH"
+				+ 	"::"
+				+	kontakte
+				+ 	"::"
+				+	stunden
+				+ 	"::"
+				+	minuten;
+			
+		
+		
+		FileOutputStream outputStream;
+
+		try {
+			outputStream = openFileOutput(filename, Context.MODE_APPEND);
+			outputStream.write(stringToWrite.getBytes());
+			outputStream.write(LINE.getBytes());
+			outputStream.flush();
+			outputStream.close();
+			
+			
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
+	
 	public boolean send(int numberOfContacts, int hours, int minutes){
 			
+		
+		createLine(numberOfContacts, hours, minutes);
 		finish();
 		
 		return true;
