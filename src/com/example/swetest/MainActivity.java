@@ -209,60 +209,7 @@ public String getUsercodeAsString(){
 		
 }
 	
-	public void createLine(int kontakte,int stunden, int minuten) {
-
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy",
-				Locale.GERMANY);
-		String datum = dateFormat.format(new java.util.Date());
-		
-		SimpleDateFormat uhrFormat = new SimpleDateFormat("HH:mm",
-				Locale.GERMANY);
-		String uhrzeit = uhrFormat.format(new java.util.Date());
-		
-		
-		
-		// create csv filename
-		String filename = getUsercodeAsString()+".csv";
-		
-		
-		//Erstellt String zum schreiben
-		String stringToWrite = 
-				
-				
-					getUsercodeAsString()
-				+	"::"
-				+ 	datum
-				+	"::"
-				+	"ALARMZEIT"
-				+	"::"
-				+	uhrzeit
-				+ 	"::"
-				+	"ABBRUCH"
-				+ 	"::"
-				+	kontakte
-				+ 	"::"
-				+	stunden
-				+ 	"::"
-				+	minuten;
-			
-		
-		
-		FileOutputStream outputStream;
-
-		try {
-			outputStream = openFileOutput(filename, Context.MODE_APPEND);
-			outputStream.write(stringToWrite.getBytes());
-			outputStream.write(LINE.getBytes());
-			outputStream.flush();
-			outputStream.close();
-			
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-	}
+	
 
 
 }
