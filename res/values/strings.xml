@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--App Name and Activity Titles-->
+    <!-- App Name and Activity Titles -->
     <string name="app_name">Psych</string>
     <string name="title_activity_statistic">Statistik ausfuellen</string>
     <string name="title_activity_set_alarms">Zeiteinstellungen</string>
     <string name="title_activity_generade_code">Benutzercode generieren</string>
-    
-    <!--Irgendetwas automtisch generiertes-->
+
+    <!-- Irgendetwas automtisch generiertes -->
     <string name="action_settings">Einstellungen</string>
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
-    
-    <!--Button Captions-->
+
+    <!-- Button Captions -->
     <string name="ok">OK</string>
     <string name="cancel">Abbrechen</string>
-    
-    <!--Notification-->
+
+    <!-- Notification -->
     <string name="input_notification_text">Bitte geben Sie Anzahl und Dauer ihrer Kontakte seit %1$s Uhr ein.</string>
     <string name="input_notification_ticker">%1$s: Bitte geben Sie ihre Kontakte ein.</string>
-    
-    <!--Generate Code Activity-->
+
+    <!-- Generate Code Activity -->
     <string name="CodeQuest">Moechten Sie dieses Konto jetzt einrichten?</string>
     <string name="CodeInstruct">Bitte tragen sie ihren Code wie folgt ein:\nDritter Buchstabe von:\n1. Vorname der Mutter\n2. Vorname des Vaters\n3. Geburtsort\n4. aktuelle Strasse\n5. Geburtsmonat</string>
     <string name="CodeExample">z.B. ABHRN</string>
     <string name="CodeError">Der eingegebene Code entspricht nicht den Anforderungen!</string>
-    
-    <!--Main Activity-->
+
+    <!-- Main Activity -->
     <string name="MenuText">Hauptmenu</string>
-    
+
     <!-- Times -->
     <string name="t9">9:00</string>
     <string name="t10">10:00</string>
@@ -41,18 +41,21 @@
     <string name="t17">17:00</string>
     <string name="t18">18:00</string>
     <string name="t19">19:00</string>
-	<string name="t20">20:00</string>
-	<string name="t21">21:00</string>
-	<string name="t22">22:00</string>
-	<string name="t23">23:00</string>
-	
-	<!-- Statistics Activity -->
-	<string name="First">Erstes Interval:</string>
-	<string name="Second">Zweites Interval:</string>
-	<string name="Third">Drittes Interval:</string>
-	<string name="Fourth">Viertes Interval:</string>
-	<string name="InputMessage">Mit wievielen Interaktionspartnern hatte sie seit %1$s Kontakt und wie lange?</string>
-	<string name="Number">Anzahl:</string>
-	<string name="Hours">Stunden:</string>
-	<string name="Minutes">Minuten:</string>
+    <string name="t20">20:00</string>
+    <string name="t21">21:00</string>
+    <string name="t22">22:00</string>
+    <string name="t23">23:00</string>
+
+    <!-- Statistics Activity -->
+    <string name="First">Erstes Interval:</string>
+    <string name="Second">Zweites Interval:</string>
+    <string name="Third">Drittes Interval:</string>
+    <string name="Fourth">Viertes Interval:</string>
+    <string name="InputMessage">Mit wievielen Interaktionspartnern hatte sie seit %1$s Kontakt und wie lange?</string>
+    <string name="Number">Anzahl:</string>
+    <string name="Hours">Stunden:</string>
+    <string name="Minutes">Minuten:</string>
+    <string name="title_activity_csv_activity">CSV_activity</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
