@@ -168,6 +168,10 @@ public class MainActivity extends Activity {
 
 		editor.putString("Usercode", actualUsercode);
 		editor.commit();
+		
+		
+		editor.putInt("lastTime", -77);
+		editor.commit();
 
 		
 		
@@ -205,12 +209,18 @@ public String getUsercodeAsString(){
 		
 }
 	
-	public void createLine() {
+	public void createLine(int kontakte,int stunden, int minuten) {
 
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy",
 				Locale.GERMANY);
 		String datum = dateFormat.format(new java.util.Date());
+		
+		SimpleDateFormat uhrFormat = new SimpleDateFormat("HH:mm",
+				Locale.GERMANY);
+		String uhrzeit = uhrFormat.format(new java.util.Date());
+		
+		
 		
 		// create csv filename
 		String filename = getUsercodeAsString()+".csv";
@@ -220,12 +230,22 @@ public String getUsercodeAsString(){
 		String stringToWrite = 
 				
 				
-				
-				getUsercodeAsString() + datum
-				
-				
-				+ "::ALARMZEIT::ANTWORTZEIT::ABBRUCH::KONTAKTE::STUNDEN::MINUTEN";
-		
+					getUsercodeAsString()
+				+	"::"
+				+ 	datum
+				+	"::"
+				+	"ALARMZEIT"
+				+	"::"
+				+	uhrzeit
+				+ 	"::"
+				+	"ABBRUCH"
+				+ 	"::"
+				+	kontakte
+				+ 	"::"
+				+	stunden
+				+ 	"::"
+				+	minuten;
+			
 		
 		
 		FileOutputStream outputStream;
