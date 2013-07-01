@@ -63,9 +63,11 @@ public class MainActivity extends Activity {
 	
 	public void test(View view){
 		setup();
-		setAlarm(5);
+		setAlarm(21);
 	}
 	
+	
+	//Hilfsvariablen um die Alarmzeiten zu übergeben
 	final static private long ONE_SECOND = 1000;
 	final static private long ONE_MINUTE = ONE_SECOND * 60;
 	final static private long ONE_HOUR = ONE_MINUTE * 60;
@@ -77,6 +79,9 @@ public class MainActivity extends Activity {
 
 	AlarmManager am;
 
+	/**
+	 * Legt Elemnte für AlarmManager an.
+	 */
 	private void setup() {
 
 		br = new BroadcastReceiver() {
@@ -84,7 +89,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onReceive(Context c, Intent i) {
 
-//				Toast.makeText(c, "Rise and Shine!", Toast.LENGTH_LONG).show();
+				//Definiert die Ausgabe
 				InputNotification.notify(c, "Mario", 1);
 			}
 
@@ -99,6 +104,10 @@ public class MainActivity extends Activity {
 
 	}
 
+	/**
+	 * 
+	 * @return aktuelle Tageszeit
+	 */
 	public static long getTime(){
 		long time = System.currentTimeMillis();
 		
@@ -109,6 +118,11 @@ public class MainActivity extends Activity {
 		return time;
 	}
 	
+	/**
+	 * Setz die Alarmzeit
+	 * 
+	 * @param l Uhrzeit(z.B. 15 für 15Uhr)
+	 */
 	public void setAlarm(long l) {
 		System.out.println(getTime());
 		System.out.println(l);
@@ -122,6 +136,9 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Zerstört alarmzeiten
+	 */
 	protected void onDestroy() {
 		am.cancel(pi);
 		unregisterReceiver(br);
