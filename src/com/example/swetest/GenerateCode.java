@@ -1,12 +1,17 @@
 package com.example.swetest;
 
+import java.io.FileOutputStream;
+
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 
 public class GenerateCode extends Activity {
@@ -43,7 +48,7 @@ public class GenerateCode extends Activity {
 			    	if (!success){
 			    		throw new SecurityException ("Couldn't hand over user code.");
 			    	}
-			    	close(view);
+			    	
 	    }
 	    else{
 //	    		System.out.println("false");
@@ -76,7 +81,58 @@ public class GenerateCode extends Activity {
 		return true;
 	}
 	
+	
+	
+	
+	
+public String getUsercodeAsString(){
+		
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		String ausgabeUsercode = preferences.getString("Usercode", "");
+		
+		if (!ausgabeUsercode.equalsIgnoreCase("")) {
+		return ausgabeUsercode;}
+		
+		else return "UNDEF";
+}
+	
+	
+	
+	
+	public void createCSV() {
+
+		
+
+		// create csv file
+		String filename = getUsercodeAsString()+".csv";
+
+		FileOutputStream outputStream;
+
+		try {
+			outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+			outputStream.flush();
+			outputStream.close();
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		}
+
+	}
+	
+	
 	public boolean send(String code){
+		
+		MainActivity.setUserCode(this, code);
+		createCSV();
+		
+		finish();
+		
+		
+		
+		
 		return true;
 	}
 	

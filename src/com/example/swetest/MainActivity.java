@@ -1,16 +1,23 @@
 package com.example.swetest;
 
+import java.io.FileOutputStream;
+
 import android.view.View;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.view.Menu;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
@@ -56,9 +63,11 @@ public class MainActivity extends Activity {
 	
 	public void test(View view){
 		setup();
-		setAlarm(5);
+		setAlarm(21);
 	}
 	
+	
+	//Hilfsvariablen um die Alarmzeiten zu übergeben
 	final static private long ONE_SECOND = 1000;
 	final static private long ONE_MINUTE = ONE_SECOND * 60;
 	final static private long ONE_HOUR = ONE_MINUTE * 60;
@@ -70,6 +79,9 @@ public class MainActivity extends Activity {
 
 	AlarmManager am;
 
+	/**
+	 * Legt Elemnte für AlarmManager an.
+	 */
 	private void setup() {
 
 		br = new BroadcastReceiver() {
@@ -77,7 +89,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onReceive(Context c, Intent i) {
 
-//				Toast.makeText(c, "Rise and Shine!", Toast.LENGTH_LONG).show();
+				//Definiert die Ausgabe
 				InputNotification.notify(c, "Mario", 1);
 			}
 
@@ -92,6 +104,10 @@ public class MainActivity extends Activity {
 
 	}
 
+	/**
+	 * 
+	 * @return aktuelle Tageszeit
+	 */
 	public static long getTime(){
 		long time = System.currentTimeMillis();
 		
@@ -102,6 +118,11 @@ public class MainActivity extends Activity {
 		return time;
 	}
 	
+	/**
+	 * Setz die Alarmzeit
+	 * 
+	 * @param l Uhrzeit(z.B. 15 für 15Uhr)
+	 */
 	public void setAlarm(long l) {
 		System.out.println(getTime());
 		System.out.println(l);
@@ -115,9 +136,71 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Zerstört alarmzeiten
+	 */
 	protected void onDestroy() {
 		am.cancel(pi);
 		unregisterReceiver(br);
 		super.onDestroy();
 	}
+	
+	
+
+	
+	
+	public static void setUserCode(Context context, String actualUsercode) {
+
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+
+		SharedPreferences.Editor editor = preferences.edit();
+
+		editor.putString("Usercode", actualUsercode);
+		editor.commit();
+
+		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+
+		alertDialog.setTitle("Succes!");
+		alertDialog.setMessage("Code erfolgreich gespeichert");
+		alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+						
+						
+					}
+				});
+		alertDialog.show();
+
+	}
+	
+	
+
+	
+	
+	
+public  void createCSV(Context context) {
+
+	
+
+	// create csv file
+	String filename = "USERCODE.txt";
+
+	FileOutputStream outputStream;
+
+	try {
+		outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+		outputStream.flush();
+		outputStream.close();
+		
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	
+	}
+
+}
+	
+	
 }
