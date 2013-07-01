@@ -131,7 +131,9 @@ public class SetAlarms extends Activity {
 			setAlarm(int2);
 		}
 		
-		super.onBackPressed();
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+//		super.onBackPressed();
 		//TODO Save Times in XML
 	}
 	
@@ -254,7 +256,7 @@ public class SetAlarms extends Activity {
 	AlarmManager am;
 
 	/**
-	 * Legt Elemnte für AlarmManager an.
+	 * Legt Elemente für AlarmManager an.
 	 */
 	public void setup() {
 
@@ -298,12 +300,13 @@ public class SetAlarms extends Activity {
 	 * @param l Uhrzeit(z.B. 15 für 15Uhr)
 	 */
 	public void setAlarm(long l) {
+		System.out.println("getTime() + l*HOUR" + getTime() +""+l*ONE_HOUR);
 		if(getTime()>l*ONE_HOUR)
-			System.out.println(SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)));
+			System.out.println("Ausgabe1: "+SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)));
 		else
-			System.out.println(SystemClock.elapsedRealtime() + (ONE_HOUR*l-getTime()));
+			System.out.println("Ausgabe: "+(SystemClock.elapsedRealtime() + (ONE_HOUR*l-getTime())));
 		System.out.println(l);
-		System.out.println(SystemClock.elapsedRealtime());
+		System.out.println("elapsedRealtime: "+SystemClock.elapsedRealtime());
 		if(getTime()>l*ONE_HOUR){
 			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
 					SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)), pi);
