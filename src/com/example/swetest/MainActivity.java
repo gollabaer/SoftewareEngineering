@@ -68,6 +68,11 @@ public class MainActivity extends Activity {
 		//InputNotification.notify(this, "10:00", 1);
 	}
 	
+	public void test(View view){
+		setup();
+		
+	}
+	
 	
 	
 	
@@ -99,10 +104,10 @@ public class MainActivity extends Activity {
 
 		};
 
-		registerReceiver(br, new IntentFilter("com.authorwjf.wakeywakey"));
+		registerReceiver(br, new IntentFilter("Mario"));
 
 		pi = PendingIntent.getBroadcast(this, 0, new Intent(
-				"com.authorwjf.wakeywakey"), 0);
+				"Mario"), 0);
 
 		am = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
 
@@ -140,9 +145,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	
-	
-	
 	/**
 	 * Zerstört alarmzeiten
 	 */
