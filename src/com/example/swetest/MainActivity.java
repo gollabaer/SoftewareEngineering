@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
 	
 	public void test(View view){
 		setup();
-		
+		setAlarm(19);
 	}
 	
 	

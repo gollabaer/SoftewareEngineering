@@ -43,16 +43,16 @@ public class InputNotification {
 	public static void notify(final Context context,
 			final String last, final int number) {
 		
-		
-		
-		SharedPreferences preferences = PreferenceManager
-				.getDefaultSharedPreferences(context);
 
-		
-		SharedPreferences.Editor editor = preferences.edit();
-		
-		editor.putInt("AlarmTime", Integer.parseInt(last.substring(0, 2)) );
-		editor.commit();
+//		
+//		SharedPreferences preferences = PreferenceManager
+//				.getDefaultSharedPreferences(context);
+//
+//		
+//		SharedPreferences.Editor editor = preferences.edit();
+//		
+//		editor.putInt("AlarmTime", Integer.parseInt(last.substring(0, 2)) );
+//		editor.commit();
 
 		
 		
