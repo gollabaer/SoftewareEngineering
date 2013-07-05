@@ -19,11 +19,6 @@ import android.content.res.Resources;
 
 public class GenerateCode extends Activity {
 
-	/**
-	 * 
-	 * @author Alena-K. Schnurr
-	 */
-
 	private static boolean valid = false; /*
 										 * valid states if the inserted string
 										 * is a valid usercode
@@ -133,13 +128,12 @@ public class GenerateCode extends Activity {
 
 	public boolean send(String code) {
 		/**
-		 * Preference UserCode is first set.
-		 * Then a CSV-file with the Usercode as filename is created.
-		 * Toast is shown and Activity is closed.
+		 * Preference UserCode is first set. Then a CSV-file with the Usercode
+		 * as filename is created. Toast is shown and Activity is closed.
 		 */
 		MainActivity.setUserCode(this, code);
 		createCSV();
-		
+
 		Context context = getApplicationContext();
 		CharSequence text = "Benutzerprofil erfolgreich angelegt.";
 		int duration = Toast.LENGTH_LONG;
@@ -169,7 +163,7 @@ public class GenerateCode extends Activity {
 		}
 
 	}
-	
+
 	public String getUsercodeAsString() {
 
 		SharedPreferences preferences = PreferenceManager
