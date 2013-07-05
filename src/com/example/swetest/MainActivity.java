@@ -33,8 +33,8 @@ public class MainActivity extends Activity {
 	}
 
 	@Override
-	protected void onStart() {
-		super.onStart();
+	protected void onResume() {
+		super.onResume();
 		
 		Button buttonTime = (Button) findViewById(R.id.buttonTime);
 		Button buttonInput = (Button) findViewById(R.id.buttonInput);
@@ -44,17 +44,19 @@ public class MainActivity extends Activity {
 		int Alarm = preferences.getInt("Zeit1", -1);
 		
 		
-		if (Usercode == null) {
+
+		if (Usercode == "UNDEF") {
 			buttonTime.setEnabled(false);
-		}
-		if (Alarm == -1) {
-				
+			buttonInput.setEnabled(false);
+		}else{
+			if (Alarm == -1) {
 				buttonInput.setEnabled(false);
-				
+				buttonTime.setEnabled(true);
 			} else {
 				buttonTime.setEnabled(true);
 				buttonInput.setEnabled(true);
 			}
+		}
 		
 	}
 
