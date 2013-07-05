@@ -43,16 +43,16 @@ public class InputNotification {
 	public static void notify(final Context context,
 			final String last, final int number) {
 		
-		
-		
-		SharedPreferences preferences = PreferenceManager
-				.getDefaultSharedPreferences(context);
 
-		
-		SharedPreferences.Editor editor = preferences.edit();
-		
-		editor.putInt("AlarmTime", Integer.parseInt(last.substring(0, 2)) );
-		editor.commit();
+//		
+//		SharedPreferences preferences = PreferenceManager
+//				.getDefaultSharedPreferences(context);
+//
+//		
+//		SharedPreferences.Editor editor = preferences.edit();
+//		
+//		editor.putInt("AlarmTime", Integer.parseInt(last.substring(0, 2)) );
+//		editor.commit();
 
 		
 		
@@ -62,8 +62,7 @@ public class InputNotification {
 
 		// This image is used as the notification's large icon (thumbnail).
 		// TODO: Remove this if your notification has no relevant thumbnail.
-		final Bitmap picture = BitmapFactory.decodeResource(res,
-				R.drawable.example_picture);
+
 
 		final String title = res.getString(
 				R.string.app_name);
@@ -93,7 +92,7 @@ public class InputNotification {
 
 				// Provide a large icon, shown with the notification in the
 				// notification drawer on devices running Android 3.0 or later.
-				.setLargeIcon(picture)
+				
 
 				// Set ticker text (preview) information for this notification.
 				.setTicker(ticker)
