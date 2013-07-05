@@ -19,19 +19,45 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.EditText;
-
 
 public class MainActivity extends Activity {
 
-	
-	
 	private static final String LINE = System.getProperty("line.separator");
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		Button buttonTime = (Button) findViewById(R.id.buttonTime);
+		Button buttonInput = (Button) findViewById(R.id.buttonInput);
+		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		String Usercode = preferences.getString("Usercode", "UNDEF");
+		int Alarm = preferences.getInt("Zeit1", -1);
+		
+		
+
+		if (Usercode == "UNDEF") {
+			buttonTime.setEnabled(false);
+			buttonInput.setEnabled(false);
+		}else{
+			if (Alarm == -1) {
+				buttonInput.setEnabled(false);
+				buttonTime.setEnabled(true);
+			} else {
+				buttonTime.setEnabled(true);
+				buttonInput.setEnabled(true);
+			}
+		}
+		
 	}
 
 	@Override
@@ -40,43 +66,38 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	public void startTime(View view){
-		
+
+	public void startTime(View view) {
+
 		Intent intent = new Intent(this, SetAlarms.class);
 		startActivity(intent);
 	}
-	
-	public void startCodeGenerator(View view){
+
+	public void startCodeGenerator(View view) {
 		Intent intent = new Intent(this, GenerateCode.class);
 		startActivity(intent);
 	}
-	
-	public void startCSV(View view){
-		
-		Intent intent = new Intent (this, CSV_activity.class);
+
+	public void startCSV(View view) {
+
+		Intent intent = new Intent(this, CSV_activity.class);
 		startActivity(intent);
-		finish(); 
-		
-		
+		finish();
+
 	}
-	
-	
-	public void startStatistic(View view){
+
+	public void startStatistic(View view) {
 		Intent intent = new Intent(this, Statistic.class);
 		startActivity(intent);
-		//InputNotification.notify(this, "10:00", 1);
+		// InputNotification.notify(this, "10:00", 1);
 	}
-	
-	public void test(View view){
+
+	public void test(View view) {
 		setup();
 		setAlarm(19);
 	}
-	
-	
-	
-	
-	//Hilfsvariablen um die Alarmzeiten zu übergeben
+
+	// Hilfsvariablen um die Alarmzeiten zu übergeben
 	final static private long ONE_SECOND = 1000;
 	final static private long ONE_MINUTE = ONE_SECOND * 60;
 	final static private long ONE_HOUR = ONE_MINUTE * 60;
@@ -98,7 +119,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onReceive(Context c, Intent i) {
 
-				//Definiert die Ausgabe
+				// Definiert die Ausgabe
 				InputNotification.notify(c, "Mario", 1);
 			}
 
@@ -106,8 +127,7 @@ public class MainActivity extends Activity {
 
 		registerReceiver(br, new IntentFilter("Mario"));
 
-		pi = PendingIntent.getBroadcast(this, 0, new Intent(
-				"Mario"), 0);
+		pi = PendingIntent.getBroadcast(this, 0, new Intent("Mario"), 0);
 
 		am = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
 
@@ -117,31 +137,33 @@ public class MainActivity extends Activity {
 	 * 
 	 * @return aktuelle Tageszeit
 	 */
-	public static long getTime(){
+	public static long getTime() {
 		long time = System.currentTimeMillis();
-		
-		while(time>ONE_DAY){
+
+		while (time > ONE_DAY) {
 			time = time - ONE_DAY;
 		}
-		
+
 		return time;
 	}
-	
+
 	/**
 	 * Setz die Alarmzeit
 	 * 
-	 * @param l Uhrzeit(z.B. 15 für 15Uhr)
+	 * @param l
+	 *            Uhrzeit(z.B. 15 für 15Uhr)
 	 */
 	public void setAlarm(long l) {
 		System.out.println(getTime());
 		System.out.println(l);
-		if(getTime()>l*ONE_HOUR){
+		if (getTime() > l * ONE_HOUR) {
 			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-					SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)), pi);
-		}
-		else{
+					SystemClock.elapsedRealtime()
+							+ (ONE_DAY - (getTime() - ONE_HOUR * l)), pi);
+		} else {
 			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-					SystemClock.elapsedRealtime() + (ONE_HOUR*l-getTime()), pi);
+					SystemClock.elapsedRealtime() + (ONE_HOUR * l - getTime()),
+					pi);
 		}
 	}
 
@@ -153,16 +175,9 @@ public class MainActivity extends Activity {
 		unregisterReceiver(br);
 		super.onDestroy();
 	}
-	
-	
 
-	
-	
 	public static void setUserCode(Context context, String actualUsercode) {
 
-		
-		
-		
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(context);
 
@@ -170,48 +185,23 @@ public class MainActivity extends Activity {
 
 		editor.putString("Usercode", actualUsercode);
 		editor.commit();
-		
-		
+
 		editor.putInt("lastTime", -77);
 		editor.commit();
 
 		
-		
-		
-		
-		
-		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-
-		alertDialog.setTitle("Succes!");
-		alertDialog.setMessage("Code erfolgreich gespeichert");
-		alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-						
-						
-					}
-				});
-		alertDialog.show();
 
 	}
-	
-	
 
-	
-public String getUsercodeAsString(){
-		
+	public String getUsercodeAsString() {
+
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		
-		String ausgabeUsercode = preferences.getString("Usercode", "UNDEF");
-		
-		
-		return ausgabeUsercode;
-		
-}
-	
-	
 
+		String ausgabeUsercode = preferences.getString("Usercode", "UNDEF");
+
+		return ausgabeUsercode;
+
+	}
 
 }
