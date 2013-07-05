@@ -139,6 +139,7 @@ public class Statistic extends Activity {
 	}
 
 	public void createLine(int kontakte, int stunden, int minuten) {
+		
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy",
 				Locale.GERMANY);
@@ -193,6 +194,10 @@ public class Statistic extends Activity {
 
 	public boolean send(int numberOfContacts, int hours, int minutes) {
 
+		
+		// Check if Lines are missing
+		
+		
 		createLine(numberOfContacts, hours, minutes);
 		finish();
 
