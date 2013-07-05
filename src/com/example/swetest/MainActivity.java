@@ -46,14 +46,16 @@ public class MainActivity extends Activity {
 		
 		if (Usercode == null) {
 			buttonTime.setEnabled(false);
-		} else {
-			if (Alarm == -1) {
+		}
+		if (Alarm == -1) {
+				
 				buttonInput.setEnabled(false);
+				
 			} else {
 				buttonTime.setEnabled(true);
 				buttonInput.setEnabled(true);
 			}
-		}
+		
 	}
 
 	@Override
@@ -185,18 +187,7 @@ public class MainActivity extends Activity {
 		editor.putInt("lastTime", -77);
 		editor.commit();
 
-		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-
-		alertDialog.setTitle("Succes!");
-		alertDialog.setMessage("Code erfolgreich gespeichert");
-		alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-
-					}
-				});
-		alertDialog.show();
+		
 
 	}
 
