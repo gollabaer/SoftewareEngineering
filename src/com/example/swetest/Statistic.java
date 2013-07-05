@@ -57,11 +57,12 @@ public class Statistic extends Activity {
 		String minutes = MinutesEdit.getText().toString();
 
 		// System.out.println(code.toString());
-				
+
 		valid = validate(numberOfContacts, hours, minutes);
 		if (valid) {
 			// System.out.println("true");
-			boolean success = send(Integer.parseInt(numberOfContacts), Integer.parseInt(hours), Integer.parseInt(minutes));
+			boolean success = send(Integer.parseInt(numberOfContacts),
+					Integer.parseInt(hours), Integer.parseInt(minutes));
 			if (!success) {
 				throw new SecurityException("Couldn't hand over user code.");
 			}
@@ -71,13 +72,15 @@ public class Statistic extends Activity {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Fehler");
 			final Resources res = this.getResources();
-			if (!numbervalid){
+			if (!numbervalid) {
 				numbervalid = true;
-				alertDialog.setMessage(res.getString(R.string.StatisticsNumberError));
+				alertDialog.setMessage(res
+						.getString(R.string.StatisticsNumberError));
 			}
-			if (!timevalid){
+			if (!timevalid) {
 				timevalid = true;
-				alertDialog.setMessage(res.getString(R.string.StatisticsTimeError));
+				alertDialog.setMessage(res
+						.getString(R.string.StatisticsTimeError));
 			}
 			alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,
 					res.getString(R.string.ok),
@@ -90,23 +93,24 @@ public class Statistic extends Activity {
 		}
 	}
 
-	public static boolean validate(String snumber, String shours, String sminutes) {
-		
-		if (snumber.isEmpty()){
+	public static boolean validate(String snumber, String shours,
+			String sminutes) {
+
+		if (snumber.isEmpty()) {
 			numbervalid = false;
 			return false;
 		}
-		if (shours.isEmpty()){
+		if (shours.isEmpty()) {
 			timevalid = false;
 			return false;
 		}
-		if (sminutes.isEmpty()){
+		if (sminutes.isEmpty()) {
 			timevalid = false;
 			return false;
 		}
 
-		int hours =  Integer.parseInt(shours);
-		int minutes =  Integer.parseInt(sminutes);
+		int hours = Integer.parseInt(shours);
+		int minutes = Integer.parseInt(sminutes);
 		// aktuelle - getLastTime() // Millisekunden
 
 		long diff = System.currentTimeMillis() - 10;// getLastTime();
@@ -147,12 +151,25 @@ public class Statistic extends Activity {
 		// create csv filename
 		String filename = getUsercodeAsString() + ".csv";
 
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		SharedPreferences.Editor editor = preferences.edit();
+		
+		
+
+		int c = preferences.getInt("WrittenLines", 0);
+		
+		editor.putInt("WrittenLines", c + 1);
+		editor.commit();
+		
+
 		// Erstellt String zum schreiben
 		String stringToWrite =
 
 		getUsercodeAsString() + "::" + datum + "::" + "ALARMZEIT" + "::"
 				+ uhrzeit + "::" + "ABBRUCH" + "::" + kontakte + "::" + stunden
-				+ "::" + minuten;
+				+ "::" + minuten + "::" + c;
 
 		FileOutputStream outputStream;
 
@@ -166,7 +183,12 @@ public class Statistic extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		
+
 		}
+		
+		
+		
 	}
 
 	public boolean send(int numberOfContacts, int hours, int minutes) {

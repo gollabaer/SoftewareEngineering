@@ -161,6 +161,19 @@ public class GenerateCode extends Activity {
 			e.printStackTrace();
 
 		}
+		
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		SharedPreferences.Editor editor = preferences.edit();
+		
+		editor.putInt("WrittenLines", 0);
+		editor.commit();
+		
+		
+		
+		
+		
 
 	}
 
