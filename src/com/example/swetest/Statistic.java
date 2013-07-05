@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Statistic extends Activity {
 
@@ -216,6 +217,13 @@ public class Statistic extends Activity {
 	
 		
 		createLine(numberOfContacts, hours, minutes);
+		
+		Context context = getApplicationContext();
+		CharSequence text = "Eingabe wurde erfolgreich gespeichert.";
+		int duration = Toast.LENGTH_LONG;
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
+		
 		finish();
 
 		return true;
