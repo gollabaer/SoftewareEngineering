@@ -51,7 +51,7 @@ public class Statistic extends Activity {
 	}
 
 	PendingIntent pendingIntent;
-	
+
 	public void onOk(View view) {
 
 		EditText NumberEdit = (EditText) findViewById(R.id.editTextNumber);
@@ -73,55 +73,57 @@ public class Statistic extends Activity {
 			if (!success) {
 				throw new SecurityException("Couldn't hand over user code.");
 			}
-			
-			
-			Long curTime = MainActivity.getTime();
-			
-			curTime = curTime/(1000*60*60);
-			SharedPreferences preferences = PreferenceManager
-					.getDefaultSharedPreferences(this);
-			
-			int int1 = preferences.getInt("Zeit1", 9);
-			int int2 = preferences.getInt("Zeit2", 13);
-			int int3 = preferences.getInt("Zeit3", 16);
-			int int4 = preferences.getInt("Zeit4", 20);
-			
-			int nexttime = 0;
-			
-			if(curTime>=int4 || curTime < int1){
-				nexttime = int1;
-			}
-			
-			if(curTime>= int3 && curTime < int4) {
-				nexttime = int4;
-			}
-			
-			if(curTime>= int2 && curTime < int3) {
-				nexttime = int3;
-			}
-			
-			if(curTime>= int1 && curTime < int2) {
-				nexttime = int2;
-			}
-			
-			
-			
-			//----------------------------------------------------------------------------------------
-			Intent myIntent = new Intent(this , SetNotific.class);     
-		    AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-		    pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
 
-		    Calendar calendar = Calendar.getInstance();
-		    calendar.set(Calendar.HOUR_OF_DAY, nexttime);
-		    calendar.set(Calendar.MINUTE, 00);
-		    calendar.set(Calendar.SECOND, 00);
-		    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-			//----------------------------------------------------------------------------------------
+			setNextAlarm();
 
 		} else {
 			// System.out.println("false");
 			showSpecificErrorMessage();
 		}
+	}
+
+	private void setNextAlarm() {
+		Long curTime = MainActivity.getTime();
+
+		curTime = curTime / (1000 * 60 * 60);
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		int int1 = preferences.getInt("Zeit1", 9);
+		int int2 = preferences.getInt("Zeit2", 13);
+		int int3 = preferences.getInt("Zeit3", 16);
+		int int4 = preferences.getInt("Zeit4", 20);
+
+		int nexttime = 0;
+
+		if (curTime >= int4 || curTime < int1) {
+			nexttime = int1;
+		}
+
+		if (curTime >= int3 && curTime < int4) {
+			nexttime = int4;
+		}
+
+		if (curTime >= int2 && curTime < int3) {
+			nexttime = int3;
+		}
+
+		if (curTime >= int1 && curTime < int2) {
+			nexttime = int2;
+		}
+
+		// ----------------------------------------------------------------------------------------
+		Intent myIntent = new Intent(this, SetNotific.class);
+		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+		pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, nexttime);
+		calendar.set(Calendar.MINUTE, 00);
+		calendar.set(Calendar.SECOND, 00);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+				pendingIntent);
+		// ----------------------------------------------------------------------------------------
 	}
 
 	private void showSpecificErrorMessage() {

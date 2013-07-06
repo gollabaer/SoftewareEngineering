@@ -44,8 +44,24 @@ public class MainActivity extends Activity {
 		String Usercode = preferences.getString("Usercode", "UNDEF");
 		int Alarm = preferences.getInt("Zeit1", -1);
 		
+		setTimeAndInputButtonEnable(buttonTime, buttonInput, Usercode, Alarm);
 		
+		setCodeButtonEnable(Usercode);
+		
+		
+	}
 
+	private void setCodeButtonEnable(String Usercode) {
+		Button buttonCode = (Button) findViewById(R.id.buttonCode);
+		if (Usercode != "UNDEF") {
+			buttonCode.setEnabled(false);
+		} else {
+			buttonCode.setEnabled(true);
+		}
+	}
+
+	private void setTimeAndInputButtonEnable(Button buttonTime,
+			Button buttonInput, String Usercode, int Alarm) {
 		if (Usercode == "UNDEF") {
 			buttonTime.setEnabled(false);
 			buttonInput.setEnabled(false);
@@ -58,7 +74,6 @@ public class MainActivity extends Activity {
 				buttonInput.setEnabled(true);
 			}
 		}
-		
 	}
 	
 	@Override
@@ -86,14 +101,6 @@ public class MainActivity extends Activity {
 	public void startCodeGenerator(View view) {
 		Intent intent = new Intent(this, GenerateCode.class);
 		startActivity(intent);
-	}
-
-	public void startCSV(View view) {
-
-		Intent intent = new Intent(this, CSV_activity.class);
-		startActivity(intent);
-		finish();
-
 	}
 
 	public void startStatistic(View view) {
