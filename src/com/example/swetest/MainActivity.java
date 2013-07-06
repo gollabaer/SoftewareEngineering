@@ -115,13 +115,6 @@ public class MainActivity extends Activity {
 	final static private long ONE_HOUR = ONE_MINUTE * 60;
 	final static private long ONE_DAY = ONE_HOUR * 24;
 
-	PendingIntent pi;
-
-	BroadcastReceiver br;
-
-	AlarmManager am;
-
-
 	/**
 	 * 
 	 * @return aktuelle Tageszeit
