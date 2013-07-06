@@ -58,7 +58,7 @@ public class InputNotification {
 		final String ticker = res.getString(
 				R.string.input_notification_ticker, title);
 		final String text = res.getString(
-				R.string.input_notification_text, last);
+				R.string.input_notification_text);
 
 		final NotificationCompat.Builder builder = new NotificationCompat.Builder(
 				context)

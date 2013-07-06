@@ -17,7 +17,7 @@
     <string name="cancel">Abbrechen</string>
 
     <!-- Notification -->
-    <string name="input_notification_text">Bitte geben Sie Anzahl und Dauer ihrer Kontakte seit %1$s Uhr ein.</string>
+    <string name="input_notification_text">Bitte Statistik ausfüllen.</string>
     <string name="input_notification_ticker">%1$s: Bitte geben Sie ihre Kontakte ein.</string>
 
     <!-- Generate Code Activity -->
@@ -51,7 +51,7 @@
     <string name="Second">Zweites Interval:</string>
     <string name="Third">Drittes Interval:</string>
     <string name="Fourth">Viertes Interval:</string>
-    <string name="InputMessage">Mit wievielen Interaktionspartnern hatte sie seit %1$s Uhr Kontakt und wie lange?</string>
+    <string name="InputMessage">Mit wievielen Interaktionspartnern hatte sie seit der letzten Eingabe Kontakt und wie lange?</string>
     <string name="Number">Anzahl:</string>
     <string name="Hours">Stunden:</string>
     <string name="Minutes">Minuten:</string>

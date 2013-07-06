@@ -36,7 +36,7 @@ public class Statistic extends Activity {
 		setContentView(R.layout.activity_statistic);
 		TextView Message = (TextView) findViewById(R.id.textViewMessage);
 		final Resources res = this.getResources();
-		Message.setText(res.getString(R.string.InputMessage, "10"));
+		Message.setText(res.getString(R.string.InputMessage));
 	}
 
 	@Override

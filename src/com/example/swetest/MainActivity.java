@@ -109,11 +109,6 @@ public class MainActivity extends Activity {
 		// InputNotification.notify(this, "10:00", 1);
 	}
 
-	public void test(View view) {
-		setup();
-		setAlarm(19);
-	}
-
 	// Hilfsvariablen um die Alarmzeiten zu übergeben
 	final static private long ONE_SECOND = 1000;
 	final static private long ONE_MINUTE = ONE_SECOND * 60;
@@ -126,29 +121,6 @@ public class MainActivity extends Activity {
 
 	AlarmManager am;
 
-	/**
-	 * Legt Elemnte für AlarmManager an.
-	 */
-	public void setup() {
-
-		br = new BroadcastReceiver() {
-
-			@Override
-			public void onReceive(Context c, Intent i) {
-
-				// Definiert die Ausgabe
-				InputNotification.notify(c, "Mario", 1);
-			}
-
-		};
-
-		registerReceiver(br, new IntentFilter("Mario"));
-
-		pi = PendingIntent.getBroadcast(this, 0, new Intent("Mario"), 0);
-
-		am = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
-
-	}
 
 	/**
 	 * 
@@ -164,35 +136,6 @@ public class MainActivity extends Activity {
 		return time;
 	}
 
-	/**
-	 * Setz die Alarmzeit
-	 * 
-	 * @param l
-	 *            Uhrzeit(z.B. 15 für 15Uhr)
-	 */
-	public void setAlarm(long l) {
-		System.out.println(getTime());
-		System.out.println(l);
-		if (getTime() > l * ONE_HOUR) {
-			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-					SystemClock.elapsedRealtime()
-							+ (ONE_DAY - (getTime() - ONE_HOUR * l)), pi);
-		} else {
-			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-					SystemClock.elapsedRealtime() + (ONE_HOUR * l - getTime()),
-					pi);
-		}
-	}
-
-	/**
-	 * Zerstört alarmzeiten
-	 */
-	protected void onDestroy() {
-		am.cancel(pi);
-		unregisterReceiver(br);
-		super.onDestroy();
-	}
-
 	public static void setUserCode(Context context, String actualUsercode) {
 
 		SharedPreferences preferences = PreferenceManager
@@ -205,8 +148,6 @@ public class MainActivity extends Activity {
 
 		editor.putInt("lastTime", -77);
 		editor.commit();
-
-		
 
 	}
 

@@ -21,25 +21,22 @@ import android.widget.RadioGroup;
 public class SetAlarms extends Activity {
 
 	private static int int1, int2, int3, int4;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-		//TODO Read Times from XML and apply them on ints
-		
+
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		
+
 		int1 = preferences.getInt("Zeit1", 9);
 		int2 = preferences.getInt("Zeit2", 13);
 		int3 = preferences.getInt("Zeit3", 16);
 		int4 = preferences.getInt("Zeit4", 20);
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_alarms);
-		
-		
-		RadioButton rbutton9  = (RadioButton) findViewById(R.id.radio9 );
+
+		RadioButton rbutton9 = (RadioButton) findViewById(R.id.radio9);
 		RadioButton rbutton10 = (RadioButton) findViewById(R.id.radio10);
 		RadioButton rbutton11 = (RadioButton) findViewById(R.id.radio11);
 		RadioButton rbutton12 = (RadioButton) findViewById(R.id.radio12);
@@ -54,7 +51,7 @@ public class SetAlarms extends Activity {
 		RadioButton rbutton21 = (RadioButton) findViewById(R.id.radio21);
 		RadioButton rbutton22 = (RadioButton) findViewById(R.id.radio22);
 		RadioButton rbutton23 = (RadioButton) findViewById(R.id.radio23);
-		
+
 		rbutton9.setChecked(int1 == 9);
 		rbutton10.setChecked(int1 == 10);
 		rbutton11.setChecked(int1 == 11);
@@ -79,16 +76,17 @@ public class SetAlarms extends Activity {
 		return true;
 	}
 
-	public void close(View view){
+	public void close(View view) {
 		super.onBackPressed();
 	}
-	
+
 	PendingIntent pendingIntent;
-	
-	public void onOk(View view){
-		
-		System.out.println("Zeit1: "+ int1 + " Zeit2: "+ int2 + " Zeit3: " + int3+ " Zeit4: "+int4);
-		
+
+	public void onOk(View view) {
+
+		System.out.println("Zeit1: " + int1 + " Zeit2: " + int2 + " Zeit3: "
+				+ int3 + " Zeit4: " + int4);
+
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
 
@@ -96,63 +94,56 @@ public class SetAlarms extends Activity {
 
 		editor.putInt("Zeit1", int1);
 		editor.commit();
-		
 
 		editor.putInt("Zeit2", int2);
 		editor.commit();
-		
 
 		editor.putInt("Zeit3", int3);
 		editor.commit();
-		
 
 		editor.putInt("Zeit4", int4);
 		editor.commit();
-		
-		
+
 		Long curTime = MainActivity.getTime();
-		
-		curTime = curTime/(1000*60*60);
-		
+
+		curTime = curTime / (1000 * 60 * 60);
 
 		int nexttime = 0;
-		
-		if(curTime>=int4 || curTime < int1){
+
+		if (curTime >= int4 || curTime < int1) {
 			nexttime = int1;
 		}
-		
-		if(curTime>= int3 && curTime < int4) {
+
+		if (curTime >= int3 && curTime < int4) {
 			nexttime = int4;
 		}
-		
-		if(curTime>= int2 && curTime < int3) {
+
+		if (curTime >= int2 && curTime < int3) {
 			nexttime = int3;
 		}
-		
-		if(curTime>= int1 && curTime < int2) {
+
+		if (curTime >= int1 && curTime < int2) {
 			nexttime = int2;
 		}
-		
-		
-		//----------------------------------------------------------------------------------------
-		Intent myIntent = new Intent(this , SetNotific.class);     
-	    AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-	    pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
 
-	    Calendar calendar = Calendar.getInstance();
-	    calendar.set(Calendar.HOUR_OF_DAY, nexttime);
-	    calendar.set(Calendar.MINUTE, 00);
-	    calendar.set(Calendar.SECOND, 00);
-	    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-		//----------------------------------------------------------------------------------------
+		// ----------------------------------------------------------------------------------------
+		Intent myIntent = new Intent(this, SetNotific.class);
+		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+		pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
 
-		
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, nexttime);
+		calendar.set(Calendar.MINUTE, 00);
+		calendar.set(Calendar.SECOND, 00);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+				pendingIntent);
+		// ----------------------------------------------------------------------------------------
+
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 	}
-	
-	public void radioButtonClick(View view){
-		
+
+	public void radioButtonClick(View view) {
 
 		switch (((RadioButton) view).getId()) {
 		case R.id.radio9:
@@ -246,92 +237,5 @@ public class SetAlarms extends Activity {
 			}
 			break;
 		}
-		
 	}
-	
-	
-	
-	
-	
-	
-	//COPY OF THE ALARMSMANAGERSTUFF------------------------------------------------------------------------------
-	
-
-	//Hilfsvariablen um die Alarmzeiten zu übergeben
-	final static private long ONE_SECOND = 1000;
-	final static private long ONE_MINUTE = ONE_SECOND * 60;
-	final static private long ONE_HOUR = ONE_MINUTE * 60;
-	final static private long ONE_DAY = ONE_HOUR * 24;
-
-	PendingIntent pi;
-
-	BroadcastReceiver br;
-
-	AlarmManager am;
-
-	/**
-	 * Legt Elemente für AlarmManager an.
-	 */
-	public void setup() {
-
-		br = new BroadcastReceiver() {
-
-			@Override
-			public void onReceive(Context c, Intent i) {
-
-				//Definiert die Ausgabe
-				InputNotification.notify(c, "Mario", 1);
-			}
-
-		};
-
-		registerReceiver(br, new IntentFilter("com.authorwjf.wakeywakey"));
-
-		pi = PendingIntent.getBroadcast(this, 0, new Intent(
-				"com.authorwjf.wakeywakey"), 0);
-
-		am = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-	}
-
-	/**
-	 * 
-	 * @return aktuelle Tageszeit
-	 */
-	public static long getTime(){
-		long time = System.currentTimeMillis();
-		
-		while(time>ONE_DAY){
-			time = time - ONE_DAY;
-		}
-		
-		return time;
-	}
-	
-	/**
-	 * Setz die Alarmzeit
-	 * 
-	 * @param l Uhrzeit(z.B. 15 für 15Uhr)
-	 */
-	public void setAlarm(long l) {
-		System.out.println("getTime() + l*HOUR" + getTime() +""+l*ONE_HOUR);
-		if(getTime()>l*ONE_HOUR)
-			System.out.println("Ausgabe1: "+SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)));
-		else
-			System.out.println("Ausgabe: "+(SystemClock.elapsedRealtime() + (ONE_HOUR*l-getTime())));
-		System.out.println(l);
-		System.out.println("elapsedRealtime: "+SystemClock.elapsedRealtime());
-		if(getTime()>l*ONE_HOUR){
-			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-					SystemClock.elapsedRealtime() + (ONE_DAY-(getTime()-ONE_HOUR*l)), pi);
-		}
-		else{
-			am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-					SystemClock.elapsedRealtime() + (ONE_HOUR*l-getTime()), pi);
-		}
-	}
-
-	//------------------------------------------------------------------------------------------------------------
-	
-	
 }
