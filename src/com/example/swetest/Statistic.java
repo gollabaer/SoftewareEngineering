@@ -160,6 +160,7 @@ public class Statistic extends Activity {
 		
 		
 
+		int notificatedNotifications = preferences.getInt("nN", 11);
 		int c = preferences.getInt("WrittenLines", 0);
 		
 		editor.putInt("WrittenLines", c + 1);
@@ -171,7 +172,7 @@ public class Statistic extends Activity {
 
 		getUsercodeAsString() + "::" + datum + "::" + "ALARMZEIT" + "::"
 				+ uhrzeit + "::" + "ABBRUCH" + "::" + kontakte + "::" + stunden
-				+ "::" + minuten + "::" + c;
+				+ "::" + minuten + "::" + c + "::" + notificatedNotifications;
 
 		FileOutputStream outputStream;
 
@@ -192,6 +193,22 @@ public class Statistic extends Activity {
 		
 		// Check if Lines are missing
 		
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		
+		
+		
+		
+		while (preferences.getInt("WrittenLines", 11) < preferences.getInt("nN", 11)){
+			
+			
+			createLine(-77, -77, -77);
+			
+			
+		}
+		
+	
 		
 		createLine(numberOfContacts, hours, minutes);
 		

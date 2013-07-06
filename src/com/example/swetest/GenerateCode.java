@@ -171,6 +171,10 @@ public class GenerateCode extends Activity {
 		editor.commit();
 		
 		
+		editor.putInt("nN", 4);
+		editor.commit();
+		
+		
 		
 		
 		
