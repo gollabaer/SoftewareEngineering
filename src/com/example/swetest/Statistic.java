@@ -184,13 +184,7 @@ public class Statistic extends Activity {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
-		
-
 		}
-		
-		
-		
 	}
 
 	public boolean send(int numberOfContacts, int hours, int minutes) {
