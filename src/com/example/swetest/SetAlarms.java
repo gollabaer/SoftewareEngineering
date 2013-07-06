@@ -1,5 +1,7 @@
 package com.example.swetest;
 
+import java.util.Calendar;
+
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -81,6 +83,8 @@ public class SetAlarms extends Activity {
 		super.onBackPressed();
 	}
 	
+	PendingIntent pendingIntent;
+	
 	public void onOk(View view){
 		
 		System.out.println("Zeit1: "+ int1 + " Zeit2: "+ int2 + " Zeit3: " + int3+ " Zeit4: "+int4);
@@ -110,31 +114,41 @@ public class SetAlarms extends Activity {
 		
 		curTime = curTime/(1000*60*60);
 		
+
+		int nexttime = 0;
 		
 		if(curTime>=int4 || curTime < int1){
-			setup();
-			setAlarm(int1);
+			nexttime = int1;
 		}
 		
 		if(curTime>= int3 && curTime < int4) {
-			setup();
-			setAlarm(int4);
+			nexttime = int4;
 		}
 		
 		if(curTime>= int2 && curTime < int3) {
-			setup();
-			setAlarm(int3);
+			nexttime = int3;
 		}
 		
 		if(curTime>= int1 && curTime < int2) {
-			setup();
-			setAlarm(int2);
+			nexttime = int2;
 		}
+		
+		
+		//----------------------------------------------------------------------------------------
+		Intent myIntent = new Intent(this , SetNotific.class);     
+	    AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+	    pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
+
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.set(Calendar.HOUR_OF_DAY, nexttime);
+	    calendar.set(Calendar.MINUTE, 00);
+	    calendar.set(Calendar.SECOND, 00);
+	    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+		//----------------------------------------------------------------------------------------
+
 		
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
-//		super.onBackPressed();
-		//TODO Save Times in XML
 	}
 	
 	public void radioButtonClick(View view){
@@ -276,7 +290,7 @@ public class SetAlarms extends Activity {
 		pi = PendingIntent.getBroadcast(this, 0, new Intent(
 				"com.authorwjf.wakeywakey"), 0);
 
-		am = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
+		am = (AlarmManager) getSystemService(ALARM_SERVICE);
 
 	}
 

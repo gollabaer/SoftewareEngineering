@@ -57,9 +57,8 @@
     <string name="Minutes">Minuten:</string>
     <string name="StatisticsTimeError">Bitte korrigieren Sie Ihre Zeitangabe.</string>
     <string name="StatisticsNumberError">Bitte korrigieren Sie Ihre angebene Anzahl an Kontakten.</string>
-    
-    
     <string name="title_activity_csv_activity">CSV_activity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_set_notific">SetNotific</string>
 
 </resources>

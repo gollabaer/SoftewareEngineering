@@ -38,6 +38,16 @@
             android:name="com.example.swetest.CSV_activity"
             android:label="@string/title_activity_csv_activity" >
         </activity>
+        <activity
+            android:name="com.example.swetest.SetNotific"
+            android:label="@string/title_activity_set_notific" >
+        </activity>
+
+        <service
+            android:name="com.example.swetest.SetNotific"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
     <uses-permission android:name="android.permission.VIBRATE" />
