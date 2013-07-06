@@ -99,19 +99,23 @@ public class GenerateCode extends Activity {
 			/**
 			 * Errormessage is case Userinput doesn't match the criteria.
 			 */
-			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-			alertDialog.setTitle("Fehler");
-			final Resources res = this.getResources();
-			alertDialog.setMessage(res.getString(R.string.CodeError));
-			alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,
-					res.getString(R.string.ok),
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							dialog.cancel();
-						}
-					});
-			alertDialog.show();
+			showErrorMessage();
 		}
+	}
+
+	private void showErrorMessage() {
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Fehler");
+		final Resources res = this.getResources();
+		alertDialog.setMessage(res.getString(R.string.CodeError));
+		alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,
+				res.getString(R.string.ok),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+		alertDialog.show();
 	}
 
 	public boolean validate(String code) {
@@ -134,15 +138,19 @@ public class GenerateCode extends Activity {
 		MainActivity.setUserCode(this, code);
 		createCSV();
 
+		showConfirmationToast();
+
+		finish();
+
+		return true;
+	}
+
+	private void showConfirmationToast() {
 		Context context = getApplicationContext();
 		CharSequence text = "Benutzerprofil erfolgreich angelegt.";
 		int duration = Toast.LENGTH_LONG;
 		Toast toast = Toast.makeText(context, text, duration);
 		toast.show();
-
-		finish();
-
-		return true;
 	}
 
 	public void createCSV() {
@@ -161,23 +169,17 @@ public class GenerateCode extends Activity {
 			e.printStackTrace();
 
 		}
-		
+
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
 
 		SharedPreferences.Editor editor = preferences.edit();
-		
+
 		editor.putInt("WrittenLines", 0);
 		editor.commit();
-		
-		
+
 		editor.putInt("nN", 4);
 		editor.commit();
-		
-		
-		
-		
-		
 
 	}
 
